@@ -36,7 +36,7 @@ try {
     const ssm = new aws_sdk_1.default.SSM();
     ssm.sendCommand();
     ssm.sendCommand({
-        InstanceIds: inputs.instanceIds,
+        Targets: inputs.targets,
         DocumentName: inputs.documentName,
         Comment: inputs.comment,
         Parameters: {
@@ -63,7 +63,7 @@ function SanitizeInputs() {
     });
     const _region = core.getInput("aws-region", { required: true });
     // SSM Send Command
-    const _instanceIds = core.getInput("instance-ids", { required: true });
+    const _targets = core.getInput("targets");
     const _command = core.getInput("command");
     const _workingDirectory = core.getInput("working-directory");
     const _comment = core.getInput("comment");
@@ -75,7 +75,7 @@ function SanitizeInputs() {
         accessKeyId: _accessKeyId,
         secretAccessKey: _secretAccessKey,
         region: _region,
-        instanceIds: _instanceIds.split(/\n/),
+        targets: JSON.parse(_targets),
         command: _command,
         documentName: _documentName,
         workingDirectory: _workingDirectory,

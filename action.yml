@@ -1,5 +1,5 @@
-name: "AWS SSM Send-Command"
-author: "Donghyun Peter Kim <peterkimzz69@gmail.com>"
+name: "AWS SSM Send-Command With Targets"
+author: "Rushal Verma <rusrushal13@gmail.com>"
 
 branding:
   icon: "arrow-up-right"
@@ -17,9 +17,9 @@ inputs:
   aws-region:
     required: true
     description: "Where EC2 instance is"
-  instance-ids:
-    required: true
-    description: "AWS EC2 Instance id or ids"
+  targets:
+    required: false
+    description: "AWS EC2 targets, for more help check ssm help command"
   command:
     required: false
     description: "Bash command you want to execute"
